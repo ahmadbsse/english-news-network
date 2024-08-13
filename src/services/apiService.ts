@@ -55,7 +55,7 @@ export const getFeedFromNYT = async (
   return { data: filteredData, total: filteredData.length };
 };
 
-export const getAllSourcesFromNewsAPI = async (): Promise<any> => {
+export const getAllSourcesFromNewsAPI = async (): Promise<unknown[]> => {
   const response = await request({
     url: URL_SOURCES_NEWS_API,
   });

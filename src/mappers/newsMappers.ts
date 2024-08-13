@@ -1,6 +1,6 @@
 import { FeedItem, NewsSources } from "../interfaces";
 
-export const transformFeed = (feed: any[]): FeedItem[] => {
+export const transformFeed = (feed): FeedItem[] => {
   const data = feed.map((item, i) => {
     const date = item.webPublicationDate || item.pub_date || item.publishedAt;
     const title = item.webTitle || item.headline?.main || item.title || "";

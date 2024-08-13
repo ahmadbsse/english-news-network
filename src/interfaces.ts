@@ -3,15 +3,15 @@ import { IdNameSummary } from "./features/preferences/preferencesSlice";
 export interface FeedItem {
   id: string;
   source: NewsSources;
-  originalSource: string
+  originalSource: string;
   dated: string;
   timestamp: number;
   title: string;
-  fullTitle: string
+  fullTitle: string;
   author: string;
   link: string;
   category: string;
-  imageUrl: string
+  imageUrl: string;
 }
 
 export interface FeedFilterParams {
@@ -19,13 +19,13 @@ export interface FeedFilterParams {
   categories?: IdNameSummary[];
   authors?: IdNameSummary[];
   keyword?: string;
-  page?: number
+  page?: number;
 }
 
 export enum NewsSources {
-    guardian = 'The Guardian',
-    nyt = 'The New York Times',
-    newsApi = 'News API'
+  guardian = "The Guardian",
+  nyt = "The New York Times",
+  newsApi = "News API",
 }
 
 export interface FeedFilters {
@@ -34,24 +34,28 @@ export interface FeedFilters {
   dated?: string;
 }
 
-export interface FetchFeedParams {
-  page: number
-  dated?: string
-  keyword?: string
-}
-
 export interface FetchApiResponse {
-  data: unknown[]
-  total: number
+  data: unknown[];
+  total: number;
 }
 
 export interface FeedList {
-  list: FeedItem[]
-  total: number
+  list: FeedItem[];
+  total: number;
 }
 
 export enum STATES {
-  success = 'success',
-  pending = 'pending',
-  failed = 'failed'
+  success = "success",
+  pending = "pending",
+  failed = "failed",
+}
+
+export interface NewsCategory {
+  category?: string;
+  news_desk?: string;
+  pillarName?: string;
+}
+
+export interface NewsSource {
+  author?: string;
 }

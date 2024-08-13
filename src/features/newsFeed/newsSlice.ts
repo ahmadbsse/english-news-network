@@ -2,13 +2,10 @@ import {
   ACTION_FETCH_FEED_GUARDIAN,
   ACTION_FETCH_FEED_NEWS_API,
   ACTION_FETCH_FEED_NYT,
-  DEFAULT_PREFERRED_NEWS_SOURCES,
 } from "../../constants";
 import {
-  FeedItem,
-  NewsSources,
-  FetchFeedParams,
   FeedList,
+  FeedFilterParams,
 } from "../../interfaces";
 import { transformFeed } from "../../mappers/newsMappers";
 import { RootState } from "../../rootReducer";
@@ -31,7 +28,7 @@ export const initialState: NewsState = {
 
 export const fetchFeedNewsAPI = createAsyncThunk(
   ACTION_FETCH_FEED_NEWS_API,
-  async (args: FetchFeedParams, { rejectWithValue, getState }) => {
+  async (args: FeedFilterParams, { rejectWithValue, getState }) => {
     try {
       const { data = [], total = 0 } = await getFeedFromNewsAPI( enhanceFetchFeedParams(getState() as RootState, args));
       return { list: transformFeed(data), total };
@@ -43,7 +40,7 @@ export const fetchFeedNewsAPI = createAsyncThunk(
 
 export const fetchNewYorkTimesAPI = createAsyncThunk(
   ACTION_FETCH_FEED_NYT,
-  async (args: FetchFeedParams, { rejectWithValue, getState }) => {
+  async (args: FeedFilterParams, { rejectWithValue, getState }) => {
     try {
       const { data = [], total = 0 } = await getFeedFromNYT(
         enhanceFetchFeedParams(getState() as RootState, args)
@@ -57,7 +54,7 @@ export const fetchNewYorkTimesAPI = createAsyncThunk(
 
 export const fetchGuardianAPI = createAsyncThunk(
   ACTION_FETCH_FEED_GUARDIAN,
-  async (args: FetchFeedParams, { rejectWithValue, getState }) => {
+  async (args: FeedFilterParams, { rejectWithValue, getState }) => {
     try {
       const { data = [], total = 0 } = await getFeedFromGuardian(
         enhanceFetchFeedParams(getState() as RootState, args)

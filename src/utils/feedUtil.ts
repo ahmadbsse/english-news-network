@@ -1,4 +1,4 @@
-import { FeedFilterParams, FetchFeedParams, NewsSources } from "../interfaces";
+import { FeedFilterParams, NewsSources } from "../interfaces";
 import { RootState } from "../rootReducer";
 
 export const addSourceInfo = (feed: object[], source: NewsSources) =>
@@ -8,7 +8,7 @@ export const addSourceInfo = (feed: object[], source: NewsSources) =>
   }));
 
 export const transformFiltersToNewsAPIParams = (filters: FeedFilterParams) => {
-  let data: any = {
+  const data = {
     page: filters.page || 1,
     ...(filters.keyword ? { q: filters.keyword } : {}),
   };
@@ -54,7 +54,10 @@ export const filterItems = (data, params: FeedFilterParams) => {
   return list;
 };
 
-export const enhanceFetchFeedParams = (state: RootState, params: FetchFeedParams) => {
+export const enhanceFetchFeedParams = (
+  state: RootState,
+  params: FeedFilterParams
+) => {
   const { categories, authors, dated = "" } = state.filters;
 
   return {

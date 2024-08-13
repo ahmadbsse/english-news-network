@@ -20,7 +20,7 @@ const FilterControl = ({
   onRemove,
 }: IProps) => {
   const optionsList = options.filter(({ name }) => !!name.trim());
-  const sortedOptions = optionsList.sort((a, b) =>
+  const sortedOptions = [...optionsList].sort((a, b) =>
     a.name.localeCompare(b.name, "en", { ignorePunctuation: true })
   );
 

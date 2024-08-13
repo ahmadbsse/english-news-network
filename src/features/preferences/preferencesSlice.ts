@@ -1,5 +1,5 @@
 import { DEFAULT_PREFERRED_NEWS_SOURCES } from "../../constants";
-import { NewsSources } from "../../interfaces";
+import { NewsCategory, NewsSources } from "../../interfaces";
 import {
   mapNewsAuthors,
   mapNewsCategories,
@@ -44,7 +44,7 @@ export const fetchNewsCategories = createAsyncThunk(
       ...guardianFeed.data,
       ...nytFeed.data,
       ...newsAPICategories,
-    ]);
+    ] as NewsCategory[]);
   }
 );
 
@@ -52,7 +52,7 @@ export const fetchNewsAuthors = createAsyncThunk(
   "preferences/authors",
   async () => {
     const newsAPIFeed = await getFeedFromNewsAPI({});
-    let authors = mapNewsAuthors(newsAPIFeed.data);
+    let authors = mapNewsAuthors(newsAPIFeed.data as { author: string }[]);
     if (
       !authors.find(
         ({ id, name }) => id === NewsSources.nyt || name === NewsSources.nyt

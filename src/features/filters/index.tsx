@@ -110,7 +110,7 @@ const FeedFilterParams = ({
             />
             <button
               className="btn-clear-filters searchWrapper"
-              onClick={resetAllFilters}
+              onClick={()=>resetAllFilters()}
             >
               Reset
             </button>

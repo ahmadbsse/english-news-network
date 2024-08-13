@@ -2,15 +2,15 @@ import {
   fetchFeedNewsAPI,
   fetchGuardianAPI,
   fetchNewYorkTimesAPI,
+  resetFeed,
 } from "../features/newsFeed/newsSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import { addFilterToQuery } from "../utils/urlUtil";
-import {
-  getNewsFeedSorted,
-} from "../selectors/newsSelector";
+import { getNewsFeedSorted } from "../selectors/newsSelector";
 import { NewsSources } from "../interfaces";
 import { parse } from "query-string";
 import { useEffect, useRef } from "react";
+import { resetAllFilters } from "../features/filters/filtersSlice";
 
 const useNewsAPI = (keyword: string) => {
   const dispatch = useAppDispatch();
@@ -34,6 +34,9 @@ const useNewsAPI = (keyword: string) => {
         dated,
         keyword,
       };
+      if(keyword !== previousKeyword.current){
+        dispatch(resetAllFilters())
+      }
       const isAllSources = sources.length === 0;
       if (
         isAllSources ||
@@ -57,6 +60,10 @@ const useNewsAPI = (keyword: string) => {
         behavior: "smooth",
       });
     }
+    
+    return () => {
+      dispatch(resetFeed());
+    };
   }, [
     dispatch,
     activePage,
