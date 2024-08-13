@@ -1,0 +1,12 @@
+@import "../../assets/scss/common.scss";
+
+.site-menu {
+  margin-top: 8rem;
+  padding-left: $site-content-indent;
+  .active {
+    font-weight: bold;
+  }
+  .nav-item a {
+    color: #195d78;
+  }
+}

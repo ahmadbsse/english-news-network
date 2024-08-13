@@ -1,0 +1,12 @@
+@import "./utils/variables.scss";
+@import "./utils/theme.scss";
+@import "./utils/mixins.scss";
+
+.tabbed-content {
+  margin-top: $site-content-indent;
+}
+
+.chip {
+  display: none;
+}
+

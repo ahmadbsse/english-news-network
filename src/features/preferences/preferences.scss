@@ -1,0 +1,17 @@
+.user-preferences {
+  .tab-title {
+    font-weight: bold;
+    font-size: 1.25rem;
+    line-height: 1.5em;
+    margin-bottom: 1em;
+  }
+  
+  .list-group-item {
+    padding-bottom: 1.75em;
+    max-width: 60rem;
+    border: 0;
+    & + .list-group-item {
+      margin-top: 1.25rem;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+.feed-card {
+  text-decoration: none;
+  .card {
+    position: relative;
+    overflow: hidden;
+    .news-category {
+      color: #c70000;
+      display: block;
+      margin-bottom: 0.25em;
+    }
+
+    .news-title {
+      font-size: 0.92rem;
+    }
+
+    .text-api-name {
+      position: absolute;
+      background-color: blue;
+      color: white;
+      border-bottom-right-radius: 4px;
+      display: flex;
+      padding: 4px;
+      font-weight: 500;
+    }
+
+    .news-author {
+      color: #195d78;
+    }
+    .text-src {
+      position: absolute;
+      color: #fff;
+      top: 24%;
+      font-weight: bold;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      text-transform: uppercase;
+      color: #fff;
+      .src-title {
+        display: block;
+        color: lightblue;
+        text-decoration: underline;
+        font-weight: bold;
+      }
+    }
+  }
+}
